@@ -1,0 +1,73 @@
+// 全屏页头页脚布局
+.pper-layout-full-header-footer-group {
+  font-size: 1.8em;
+  color: $color-text-main;
+  width: 100%;
+  flex-direction: column;
+  .pper-layout-full-header-footer-content {
+    display: flex;
+    flex-direction: column;
+    //页头
+    .pper-theme-header {
+      flex-direction: column;
+      justify-content: center;
+      .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+    //主要显示区域
+    .pper-theme-content {
+      flex: 1;
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+    // 页脚
+    .pper-layout-footer {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.pper-layout-full-header-aside-group {
+  @extend %full;
+  color: $color-text-main;
+  width: 100%;
+  font-size: 1.8em;
+  .pper-layout-full-header-aside-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    //页头
+    .pper-theme-header {
+      flex-direction: column;
+      justify-content: center;
+      .box {
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+    //主要显示区域
+    .pper-theme-content {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      .box-aside {
+        overflow: auto;
+        width: 200px;
+      }
+      .box-content {
+        overflow: auto;
+        flex-direction: column;
+        flex: 1;
+      }
+    }
+    // 页脚
+    .pper-theme-footer {
+      justify-content: center;
+    }
+  }
+}
