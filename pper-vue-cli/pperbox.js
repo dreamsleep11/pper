@@ -3,6 +3,8 @@ const program = require('commander')
 const shell = require('shelljs')
 const path = require('path')
 const readline = require('readline')
+const gulp = require('gulp')
+require('./gulpTasks.js')
 const gitBoxPath = `https://github.com/dreamsleep11/pper-base-box.git`
 var boxName = ''
 const rl = readline.createInterface({
@@ -22,14 +24,15 @@ async function makePro(url, name) {
   }
 }
 async function main() {
-  rl.question('请输入项目名称[不可空]:', inputValue => {
-    if (inputValue) {
-      boxName = inputValue
-      makePro(gitBoxPath, boxName)
-    } else {
-      console.info('无效项目名称！')
-      rl.close()
-    }
-  })
+  gulp.start('cloneCode', function(err, msg) {})
+  // rl.question('请输入项目名称[不可空]:', inputValue => {
+  //   if (inputValue) {
+  //     boxName = inputValue
+  //     makePro(gitBoxPath, boxName)
+  //   } else {
+  //     console.info('无效项目名称！')
+  //     rl.close()
+  //   }
+  // })
 }
 main()
