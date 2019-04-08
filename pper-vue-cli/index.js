@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const clone = require('git-clone-promise')
 const program = require('commander')
 const shell = require('shelljs')
