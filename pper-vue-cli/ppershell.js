@@ -3,8 +3,10 @@ const program = require('commander')
 const shell = require('shelljs')
 const path = require('path')
 const readline = require('readline')
-const gitBoxPath = `https://github.com/dreamsleep11/pper-base-shell.git`
-var boxName = ''
+const through = require('through2')
+const glob = require('./glob')
+const gulp = require('gulp')
+require('./gulpTasks.js')
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -21,11 +23,18 @@ async function makePro(url, name) {
     console.info(e)
   }
 }
+
 async function main() {
   rl.question('请输入项目名称[不可空]:', inputValue => {
     if (inputValue) {
-      boxName = inputValue
-      makePro(gitBoxPath, boxName)
+      glob.shell.name = inputValue
+      gulp.start(['cloneShell'], function(err, msg) {
+        if (err) {
+          console.info('err', err)
+          rl.close()
+        }
+      })
+      rl.close()
     } else {
       console.info('无效项目名称！')
       rl.close()
