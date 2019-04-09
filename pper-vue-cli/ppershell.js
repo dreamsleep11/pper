@@ -4,9 +4,7 @@ const shell = require('shelljs')
 const path = require('path')
 const readline = require('readline')
 const through = require('through2')
-const glob = require('./glob')
-const gulp = require('gulp')
-require('./gulpTasks.js')
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
