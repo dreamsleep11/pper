@@ -1,11 +1,16 @@
 {
   "name": "pper-vue-cli",
-  "version": "1.0.4",
-  "description": "脚手架工具",
+  "version": "1.0.5",
+  "description": "基于Vue技术栈的一个脚手架工具",
   "main": "index.js",
   "bin": {
     "ppercli": "index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dreamsleep11/pper"
+  },
+  "homepage": "https://github.com/dreamsleep11/pper",
   "scripts": {
     "ppercli": "node ./index.js"
   },
