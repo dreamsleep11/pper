@@ -1,8 +1,8 @@
 # pper
-基于Vue技术栈的组件化解决方案
-# pper-ver-kenal
-核心组件
-# pper=base-shell
-输出物
-# pper-base-box
-功能盒子
+# 这是什么
+这是一个给予Vue技术栈模块式开发架构基础项目创建脚手架。
+# 怎么用
+```
+npm install pper-vue-cli
+ppercli
+```
