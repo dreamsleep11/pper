@@ -6,6 +6,7 @@ const path = require('path')
 const readline = require('readline')
 const through = require('through2')
 const minimist = require('minimist');
+const vfs = require('vinyl-fs');
 const gitShellPath = `https://github.com/dreamsleep11/pper-base-shell.git`
 const gitBoxPath = `https://github.com/dreamsleep11/pper-base-box.git`
 const rl = readline.createInterface({
