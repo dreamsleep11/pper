@@ -1,13 +1,11 @@
 #!/usr/bin/env node
 const gulp = require('gulp')
 const clone = require('git-clone-promise')
-const program = require('commander')
 const shell = require('shelljs')
 const path = require('path')
 const readline = require('readline')
 const through = require('through2')
 const minimist = require('minimist');
-var global = require('./global')
 const gitShellPath = `https://github.com/dreamsleep11/pper-base-shell.git`
 const gitBoxPath = `https://github.com/dreamsleep11/pper-base-box.git`
 const rl = readline.createInterface({
@@ -69,6 +67,7 @@ gulp.task('cloneShell', async function () {
   let localpath = path.join(pwd.toString(), options.name)
   await clone(gitShellPath, localpath)
   await shell.rm('-rf', path.join(localpath, '.git'))
+  rl.close()
   return gulp
     .src(localpath + '/**')
     .pipe(minifyShell())

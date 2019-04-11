@@ -4,12 +4,12 @@
   "description": "脚手架工具",
   "main": "index.js",
   "bin": {
-    "pperbox": "node ./pperbox.js",
-    "ppershell": "node ./pperbox.js"
+    "pperbox": "pperbox.js",
+    "ppershell": "ppershell.js"
   },
   "scripts": {
     "pperbox": "node ./pperbox.js",
-    "ppershell": "node ./pperbox.js"
+    "ppershell": "node ./ppershell.js"
   },
   "author": "dreamsleep",
   "license": "ISC",
