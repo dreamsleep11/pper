@@ -25,13 +25,8 @@ async function makePro(url, name) {
 async function main() {
   rl.question('请输入项目名称[不可空]:', inputValue => {
     if (inputValue) {
-      glob.shell.name = inputValue
-      gulp.start(['cloneShell'], function(err, msg) {
-        if (err) {
-          console.info('err', err)
-          rl.close()
-        }
-      })
+      global.setBoxName(inputValue)
+      shell.exec('gulp cloneShell --name ' + inputValue)
       rl.close()
     } else {
       console.info('无效项目名称！')

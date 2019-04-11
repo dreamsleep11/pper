@@ -6,22 +6,28 @@ const shell = require('shelljs')
 const path = require('path')
 const readline = require('readline')
 const through = require('through2')
-// const glob = require('./global')
+const minimist = require('minimist');
+var global = require('./global')
 const gitShellPath = `https://github.com/dreamsleep11/pper-base-shell.git`
 const gitBoxPath = `https://github.com/dreamsleep11/pper-base-box.git`
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 })
+var knownOptions = {
+  string: 'name',
+  default: { name: 'pper-base-box' }
+};
+var options = minimist(process.argv.slice(2), knownOptions);
 function replaseBoxContext(str) {
   if (str.indexOf('pper-base-box') > -1) {
-    return str.replace(/pper-base-box/g, glob.box.name)
+    return str.replace(/pper-base-box/g, options.name)
   } else {
     return str
   }
 }
 function minifyBox() {
-  return through.obj(function(file, encoding, callback) {
+  return through.obj(function (file, encoding, callback) {
     if (file.contents) {
       file.contents = new Buffer(replaseBoxContext(file.contents.toString()))
     }
@@ -32,13 +38,13 @@ function minifyBox() {
 
 function replaseShellContext(str) {
   if (str.indexOf('pper-base-shell') > -1) {
-    return str.replace(/pper-base-shell/g, glob.shell.name)
+    return str.replace(/pper-base-shell/g, options.name)
   } else {
     return str
   }
 }
 function minifyShell() {
-  return through.obj(function(file, encoding, callback) {
+  return through.obj(function (file, encoding, callback) {
     if (file.contents) {
       file.contents = new Buffer(replaseShellContext(file.contents.toString()))
     }
@@ -46,11 +52,9 @@ function minifyShell() {
     callback()
   })
 }
-gulp.task('cloneBox', async function(option) {
-  console.info(global)
-  console.info(global.boxName)
+gulp.task('cloneBox', async function (option) {
   let pwd = shell.pwd()
-  let localpath = path.join(pwd.toString(), global.boxName)
+  let localpath = path.join(pwd.toString(), options.name)
   await clone(gitBoxPath, localpath)
   await shell.rm('-rf', path.join(localpath, '.git'))
   rl.close()
@@ -60,9 +64,9 @@ gulp.task('cloneBox', async function(option) {
     .pipe(gulp.dest(localpath))
 })
 
-gulp.task('cloneShell', async function(option) {
+gulp.task('cloneShell', async function () {
   let pwd = shell.pwd()
-  let localpath = path.join(pwd.toString(), global.shellName)
+  let localpath = path.join(pwd.toString(), options.name)
   await clone(gitShellPath, localpath)
   await shell.rm('-rf', path.join(localpath, '.git'))
   return gulp
@@ -70,6 +74,6 @@ gulp.task('cloneShell', async function(option) {
     .pipe(minifyShell())
     .pipe(gulp.dest(localpath))
 })
-gulp.task('modifyFile', function() {
+gulp.task('modifyFile', function () {
   gulp.src('files').pipe(gulp.dest(''))
 })
