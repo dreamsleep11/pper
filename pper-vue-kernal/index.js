@@ -69,6 +69,7 @@ const kernal = {
       store,
       render: h => h(App)
     })
+    routerFac.setApp(this.initVue)
     /**
      * 注册状态控制器
      */
@@ -124,4 +125,7 @@ const kernal = {
     return false
   }
 }
+
+Vue.prototype.getToken = kernal.util.token.getToken
+Vue.prototype.setToken = kernal.util.token.setToken
 export default kernal

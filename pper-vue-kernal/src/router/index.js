@@ -4,7 +4,8 @@ import VueRouter from 'vue-router'
 // 路由数据
 import routesObj from './routes'
 const router = {
-  init: function(inRouters) {
+  app: undefined,
+  init: function (inRouters) {
     // let { inRouters, indexName } = opt
     Vue.use(VueRouter)
     if (inRouters) {
@@ -26,13 +27,16 @@ const router = {
       // }
     })
 
-    router.afterEach(to => {})
+    router.afterEach(to => { })
     return { router: router }
   },
   setIndex(indexName) {
     if (indexName) {
       routesObj.inRouters[0].redirect.name = indexName
     }
+  },
+  setApp(app) {
+    this.app = app
   }
 }
 
