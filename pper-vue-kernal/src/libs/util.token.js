@@ -2,10 +2,10 @@ import db from './util.db.js'
 
 const token = {
   setToken: function (token) {
-    db.set(`sys.public.$token`, token).write()
+    db.set(`sys.credentials.$token`, token).write()
   },
   getToken: function () {
-    return db.get(`sys.public.$token`).value()
+    return db.get(`sys.credentials.$token`).value()
   }
 }
 export default token

@@ -7,12 +7,7 @@ import EventBus from './src/libs/event.bus'
 import store from './src/store/index'
 import utter from './src/module/utter'
 import util from './src/libs/util'
-// 跳出模块
-Vue.prototype.goOut = path => {
-  EventBus.$emit(path)
-}
-// 出口清单
-Vue.prototype.$utter = utter
+
 const kernal = {
   util: util,
   registedBox: [],
@@ -125,7 +120,14 @@ const kernal = {
     return false
   }
 }
-
+// 跳出模块
+Vue.prototype.goOut = path => {
+  EventBus.$emit(path)
+}
+// 出口清单
+Vue.prototype.$utter = utter
 Vue.prototype.getToken = kernal.util.token.getToken
 Vue.prototype.setToken = kernal.util.token.setToken
+Vue.prototype.DataBus = kernal.util.databus
+
 export default kernal
