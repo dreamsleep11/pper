@@ -1,10 +1,12 @@
 // 全屏页头页脚布局
 .pper-layout-full-header-footer-group {
+  @extend %full;
   font-size: 1.8em;
   color: $color-text-main;
   width: 100%;
   flex-direction: column;
   .pper-layout-full-header-footer-content {
+    height: 100%;
     display: flex;
     flex-direction: column;
     //页头

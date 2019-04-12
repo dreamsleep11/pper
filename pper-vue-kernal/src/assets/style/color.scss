@@ -1,17 +1,30 @@
-$color-primary: #409eff !global; // 主色
-$color-info: #909399 !global;
-$color-success: #67c23a !global;
-$color-warning: #e6a23c !global;
-$color-danger: #f56c6c !global;
-
-$color-text-main: #303133 !global;
-$color-text-normal: #606266 !global;
-$color-text-white: #ffffff !global;
-$color-text-sub: #909399 !global;
-$color-text-placehoder: #c0c4cc !global;
 
 $color-border-1: #dcdfe6 !global;
 $color-border-2: #e4e7ed !global;
 $color-border-3: #ebeef5 !global;
 $color-border-4: #f2f6fc !global;
 $color-bg: #f5f5f5 !global;
+
+$color-primary:#5AAAFA !global; //主题色
+$color-warning:#ED852F !global; //警告色
+$color-required:#f56c6c !global; //校验色（与饿了么组件保持一致）
+$color-danger:#FF001F !global; //错误色
+$color-success:#2CA02C !global; //成功色
+
+$color-border-enabled:#D2D2D2 !global; //边框色(启用)
+$color-border-disabled:#E6E6E6 !global; //边框色(非启用)
+$color-background-disable:#f5f7fa !global; // input 禁用背景色
+
+$color-base-white:#FFFFFF !global; //基础白色
+$color-base-black:#000000 !global; //基础黑色
+$color-background-sidebar:#f7fbff !global; //sidebar选中项背景色
+$color-table-th:#e1effd !global;
+$color-shadow:rgba(0, 0, 0, 0.1) !global; // 阴影颜色
+
+/**字体颜色定义开始**/
+$color-text-main: #303133 !global;//主文字色
+$color-text-normal: #606266 !global;//默认文字色
+$color-text-white: #ffffff !global;//白色文字色
+$color-text-sub: #909399 !global;//子标题色
+$color-text-placehoder: #c0c4cc !global;//展位文字颜色
+/**字体颜色定义开始**/
