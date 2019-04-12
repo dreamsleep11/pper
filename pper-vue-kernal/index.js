@@ -17,9 +17,9 @@ const kernal = {
   registedBox: [],
   wormhole: {},
   initVue: undefined,
-  makeWormhole(nameSpace, from, to) {
+  makeWormhole(from, to) {
     if (this.wormhole) {
-      this.wormhole[nameSpace + '/' + from.tag] = to
+      this.wormhole[from.tag] = to
     }
   },
   /**
@@ -35,24 +35,24 @@ const kernal = {
      */
     if (opt.boxs) {
       opt.boxs.forEach(element => {
-          if (element.box) {
-             if (!this.checkNameSpace(element.box.nameSpace)) {
-              util.log.success('==========扫描业务盒子[' + element.box.nameSpace + ':' + element.box.description + ']成功！==========')
-              Object.keys(element.box.utter).forEach(key => {
-                util.log.success(JSON.stringify(element.box.nameSpace + '/' + element.box.utter[key].tag + '[' + element.box.utter[key].description + ']'))
-              })
-              this.registedBox.push({ nameSpace: element.box.nameSpace, description: element.box.description })
-              let routerArray = element.box.router(element.layout)
-              if (routerArray) {
-                  routers.push(...routerArray)
-              }
-              if (element.box.store) {
-                stores.push({ nameSpace: element.box.nameSpace, store: element.box.store })
-              }
-        } else {
-          util.log.danger('==========扫描业务盒子[' + element.box.nameSpace + ':' + element.box.description + ']错误！盒子已注册==========')
+        if (element.box) {
+          if (!this.checkNameSpace(element.box.nameSpace)) {
+            util.log.success('==========扫描业务盒子[' + element.box.nameSpace + ':' + element.box.description + ']成功！==========')
+            Object.keys(element.box.utter).forEach(key => {
+              util.log.success(JSON.stringify(element.box.utter[key].tag + '[' + element.box.utter[key].description + ']'))
+            })
+            this.registedBox.push({ nameSpace: element.box.nameSpace, description: element.box.description })
+            let routerArray = element.box.router(element.layout)
+            if (routerArray) {
+              routers.push(...routerArray)
+            }
+            if (element.box.store) {
+              stores.push({ nameSpace: element.box.nameSpace, store: element.box.store })
+            }
+          } else {
+            util.log.danger('==========扫描业务盒子[' + element.box.nameSpace + ':' + element.box.description + ']错误！盒子已注册==========')
+          }
         }
-      }
       })
     }
     /**
@@ -87,11 +87,11 @@ const kernal = {
      * 载入入口事件监听
      */
     if (kernal.wormhole) {
-      Object.keys(kernal.wormhole).forEach(function(key) {
+      Object.keys(kernal.wormhole).forEach(function (key) {
         EventBus.$on(key, () => {
           util.log.success('==========传送门==========')
-          util.log.success(key + '====>' + kernal.wormhole[key])
-          kernal.initVue.$router.push(kernal.wormhole[key])
+          util.log.success(key + '====>' + kernal.wormhole[key].tag)
+          kernal.initVue.$router.push('/' + kernal.wormhole[key].tag)
           util.log.success('==========传送门==========')
         })
       })
@@ -117,7 +117,7 @@ const kernal = {
   checkNameSpace(nameSpace) {
     for (var i = 0; i < this.registedBox.length; i++) {
       if (this.registedBox[i].nameSpace == nameSpace) {
-          return true
+        return true
       }
     }
     return false
