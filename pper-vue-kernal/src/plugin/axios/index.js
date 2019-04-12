@@ -70,34 +70,9 @@ service.interceptors.response.use(
         }
       }
     }
-    // console.info(kernal.initVue)
-    // dataAxios 是 axios 返回数据中的 data
-    const dataAxios = response.data
-    // 这个状态码是和后端约定的
-    const { status } = dataAxios
-    // util.log.success(JSON.stringify(response))
-    // code
-    // console.info('response', response)
-    // 根据 code 进行判断
-    if (status === 1) {
-      // 如果没有 code 代表这不是项目后端开发的接口 比如可能是 D2Admin 请求最新版本
-      return { message: '没有配置数据拦截器' }
-      // } else {
-      //   // 有 code 代表这是一个后端接口 可以进行进一步的判断
-      //   switch (code) {
-      //     case 1:
-      //       // [ 示例 ] code === 0 代表没有错误
-      //       return dataAxios
-      //     case 'xxx':
-      //       // [ 示例 ] 其它和后台约定的 code
-      //       errorCreat(`[ code: xxx ] ${dataAxios.msg}: ${response.config.url}`)
-      //       break
-      //     default:
-      //       // 不是正确的 code
-      //       errorCreat(`${dataAxios.msg}: ${response.config.url}`)
-      //       break
-      //   }
-    }
+
+    return { message: '没有配置数据拦截器' }
+
   },
   error => {
     if (error && error.response) {
@@ -136,6 +111,7 @@ service.interceptors.response.use(
           error.message = 'HTTP版本不受支持'
           break
         default:
+          error.message = '网络错误'
           break
       }
     }
