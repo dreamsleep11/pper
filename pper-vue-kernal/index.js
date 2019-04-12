@@ -14,6 +14,7 @@ Vue.prototype.goOut = path => {
 // 出口清单
 Vue.prototype.$utter = utter
 const kernal = {
+  util: util,
   registedBox: [],
   wormhole: {},
   initVue: undefined,
