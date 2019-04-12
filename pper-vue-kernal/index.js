@@ -128,6 +128,6 @@ Vue.prototype.goOut = path => {
 Vue.prototype.$utter = utter
 Vue.prototype.getToken = kernal.util.token.getToken
 Vue.prototype.setToken = kernal.util.token.setToken
-Vue.prototype.DataBus = kernal.util.databus
+Vue.prototype.databus = kernal.util.databus
 
 export default kernal

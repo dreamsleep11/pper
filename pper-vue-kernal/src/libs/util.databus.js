@@ -9,8 +9,9 @@ const dataBus = {
   },
   pop: function (key) {
     let res = db.get(`sys.databus.${key}`).value()
-    db.remove(`sys.databus.${key}`).write()
-    return res;
+    db.unset(`sys.databus.${key}`)
+      .write()
+    return res
   }
 }
 export default dataBus
