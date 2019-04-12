@@ -21,7 +21,7 @@ function errorLog(err) {
   // 打印到控制台
   if (process.env.NODE_ENV === 'development') {
     util.log.danger('>>>>>> 网络请求错误 >>>>>>')
-    console.log(err)
+    console.error(err)
   }
   // 显示提示
   Message({
@@ -43,14 +43,13 @@ service.interceptors.request.use(
     // 在请求发送之前做一些处理
     if (!/^https:\/\/|http:\/\//.test(config.url)) {
       if (kernal.initVue.$pper.interceptors) {
-        if (kernal.initVue.$pper.interceptors.ajax) {
-          if (kernal.initVue.$pper.interceptors.ajax.request) {
-            kernal.initVue.$pper.interceptors.ajax.request(config)
+        if (kernal.initVue.$pper.interceptors.network) {
+          if (kernal.initVue.$pper.interceptors.network.request) {
+            kernal.initVue.$pper.interceptors.network.request(config)
           }
         }
       }
     }
-    console.info(config)
     return config
   },
   error => {
@@ -64,9 +63,9 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     if (kernal.initVue.$pper.interceptors) {
-      if (kernal.initVue.$pper.interceptors.ajax) {
-        if (kernal.initVue.$pper.interceptors.ajax.response) {
-          return kernal.initVue.$pper.interceptors.ajax.response(response)
+      if (kernal.initVue.$pper.interceptors.network) {
+        if (kernal.initVue.$pper.interceptors.network.response) {
+          return kernal.initVue.$pper.interceptors.network.response(response)
         }
       }
     }
