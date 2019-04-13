@@ -71,7 +71,6 @@ service.interceptors.response.use(
     }
 
     return { message: '没有配置数据拦截器' }
-
   },
   error => {
     if (error && error.response) {

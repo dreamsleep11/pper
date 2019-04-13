@@ -3,10 +3,12 @@ import cookies from './util.cookies.js'
 import db from './util.db.js'
 import token from './util.token.js'
 import databus from './util.databus.js'
+import multipointlock from './util.multipointlock.js'
 let util = {
   cookies,
   db,
   token,
+  multipointlock,
   databus,
   log
 }
