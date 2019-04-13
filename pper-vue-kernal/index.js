@@ -128,7 +128,7 @@ Vue.prototype.jump = path => {
   kernal.initVue.$router.push(path)
 }
 // 出口清单
-Vue.prototype.$utter = utter
+// Vue.prototype.$outter = outter
 Vue.prototype.getToken = kernal.util.token.getToken
 Vue.prototype.setToken = kernal.util.token.setToken
 Vue.prototype.databus = kernal.util.databus
