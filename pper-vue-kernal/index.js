@@ -5,7 +5,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import EventBus from './src/libs/event.bus'
 import store from './src/store/index'
-import utter from './src/module/utter'
+// import outter from './src/module/outter'
 import util from './src/libs/util'
 
 const kernal = {
@@ -34,8 +34,8 @@ const kernal = {
         if (element.box) {
           if (!this.checkNameSpace(element.box.nameSpace)) {
             util.log.success('==========扫描业务盒子[' + element.box.nameSpace + ':' + element.box.description + ']成功！==========')
-            Object.keys(element.box.utter).forEach(key => {
-              util.log.success(JSON.stringify(element.box.utter[key].tag + '[' + element.box.utter[key].description + ']'))
+            Object.keys(element.box.outter).forEach(key => {
+              util.log.success(JSON.stringify(element.box.outter[key].tag + '[' + element.box.outter[key].description + ']'))
             })
             this.registedBox.push({ nameSpace: element.box.nameSpace, description: element.box.description })
             let routerArray = element.box.router(element.layout)
