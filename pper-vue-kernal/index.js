@@ -124,6 +124,9 @@ const kernal = {
 Vue.prototype.goOut = path => {
   EventBus.$emit(path)
 }
+Vue.prototype.jump = path => {
+  kernal.initVue.$router.push(path)
+}
 // 出口清单
 Vue.prototype.$utter = utter
 Vue.prototype.getToken = kernal.util.token.getToken
