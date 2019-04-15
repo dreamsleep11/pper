@@ -29,7 +29,7 @@ const router = {
      */
     router.beforeEach((to, from, next) => {
       if (this.interceptor) {
-        if (typeof (router.interceptor.before) === 'function') {
+        if (typeof (this.interceptor.before) === 'function') {
           router.interceptor.before(to, from, next)
         } else {
           next()
@@ -43,7 +43,7 @@ const router = {
      */
     router.afterEach(to => {
       if (this.interceptor) {
-        if (typeof (router.interceptor.after) === 'function') {
+        if (typeof (this.interceptor.after) === 'function') {
           router.interceptor.after(to)
         }
       }
