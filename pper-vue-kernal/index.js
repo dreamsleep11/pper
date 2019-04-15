@@ -54,7 +54,7 @@ const kernal = {
     /**
      * 整合路由
      */
-    routerFac.setApp(this.initVue)
+    routerFac.setInterceptor(opt.interceptors)// 注册路由拦截器
     let router = routerFac.init(routers).router
     routerFac.setIndex(opt.indexName)
     /**
@@ -70,7 +70,7 @@ const kernal = {
      * 注册状态控制器
      */
     this.loadStores(stores)
-
+    routerFac.setApp(this.initVue)
     this.initVue.$pper = {}
     this.initVue.$pper.interceptors = opt.interceptors
     /**

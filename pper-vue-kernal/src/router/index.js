@@ -57,7 +57,9 @@ const router = {
   },
   setApp(app) {
     this.app = app
-    this.interceptor = app.interceptors.router
+  },
+  setInterceptor(interceptors) {
+    this.interceptor = interceptors.router
   }
 }
 
