@@ -54,6 +54,7 @@ const kernal = {
     /**
      * 整合路由
      */
+    routerFac.setApp(this.initVue)
     let router = routerFac.init(routers).router
     routerFac.setIndex(opt.indexName)
     /**
@@ -64,7 +65,7 @@ const kernal = {
       store,
       render: h => h(App)
     })
-    routerFac.setApp(this.initVue)
+    // routerFac.setApp(this.initVue)
     /**
      * 注册状态控制器
      */

@@ -4,6 +4,13 @@ import VueRouter from 'vue-router'
 // 路由数据
 import routesObj from './routes'
 const router = {
+  /**
+   * 拦截器
+   */
+  interceptor: {
+    before: undefined,
+    after: undefined
+  },
   app: undefined,
   init: function (inRouters) {
     Vue.use(VueRouter)
@@ -21,13 +28,9 @@ const router = {
      * 路由前拦截
      */
     router.beforeEach((to, from, next) => {
-      if (this.app.$pper.interceptors) {
-        if (this.app.$pper.interceptors.router) {
-          if (typeof (this.app.$pper.interceptors.router.before) === 'function') {
-            router.interceptor.before(to, from, next)
-          } else {
-            next()
-          }
+      if (this.interceptor) {
+        if (typeof (router.interceptor.before) === 'function') {
+          router.interceptor.before(to, from, next)
         } else {
           next()
         }
@@ -39,11 +42,9 @@ const router = {
      * 路由后拦截
      */
     router.afterEach(to => {
-      if (this.app.$pper.interceptors) {
-        if (this.app.$pper.interceptors.router) {
-          if (typeof (this.app.$pper.interceptors.router.after) === 'function') {
-            router.interceptor.after(to)
-          }
+      if (this.interceptor) {
+        if (typeof (router.interceptor.after) === 'function') {
+          router.interceptor.after(to)
         }
       }
     })
@@ -56,6 +57,7 @@ const router = {
   },
   setApp(app) {
     this.app = app
+    this.interceptor = app.interceptors.router
   }
 }
 
