@@ -6,7 +6,6 @@ import routesObj from './routes'
 const router = {
   app: undefined,
   init: function (inRouters) {
-    // let { inRouters, indexName } = opt
     Vue.use(VueRouter)
     if (inRouters) {
       routesObj.inRouters.push(...inRouters)
@@ -19,15 +18,35 @@ const router = {
     })
 
     /**
-     * 路由拦截
-     * 权限验证
+     * 路由前拦截
      */
     router.beforeEach((to, from, next) => {
-      next()
-      // }
+      if (this.app.$pper.interceptors) {
+        if (this.app.$pper.interceptors.router) {
+          if (typeof (this.app.$pper.interceptors.router.before) === 'function') {
+            router.interceptor.before(to, from, next)
+          } else {
+            next()
+          }
+        } else {
+          next()
+        }
+      } else {
+        next()
+      }
     })
-
-    router.afterEach(to => { })
+    /**
+     * 路由后拦截
+     */
+    router.afterEach(to => {
+      if (this.app.$pper.interceptors) {
+        if (this.app.$pper.interceptors.router) {
+          if (typeof (this.app.$pper.interceptors.router.after) === 'function') {
+            router.interceptor.after(to)
+          }
+        }
+      }
+    })
     return { router: router }
   },
   setIndex(indexName) {
