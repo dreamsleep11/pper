@@ -1,6 +1,6 @@
 {
   "name": "@vhepro/pper-vue-kernal",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "main": "index.js",
   "description": "pper-vue核心",
   "scripts": {},
