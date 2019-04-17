@@ -7,9 +7,9 @@
         </div>
       </div>
       <div class="pper-theme-content">
-        <transition name="fade-scale">
-          <router-view/>
-        </transition>
+        <!-- <transition name="fade-scale"> -->
+        <router-view/>
+        <!-- </transition> -->
       </div>
       <div class="pper-theme-footer">
         <div v-if="$slots.footer" class="box" ref="footer">

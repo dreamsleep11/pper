@@ -11,9 +11,9 @@
           <slot name="aside"/>
         </div>
         <div class="box-content">
-          <transition name="fade-scale">
-            <router-view/>
-          </transition>
+          <!-- <transition name="fade-scale"> -->
+          <router-view/>
+          <!-- </transition> -->
         </div>
       </div>
       <div class="pper-theme-footer">
