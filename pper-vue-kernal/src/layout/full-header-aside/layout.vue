@@ -7,7 +7,9 @@
         </div>
       </div>
       <div class="pper-theme-content">
-        <div class="box-aside">aside</div>
+        <div v-if="$slots.aside" class="box-aside" ref="aside">
+          <slot name="aside"/>
+        </div>
         <div class="box-content">
           <transition name="fade-scale">
             <router-view/>
