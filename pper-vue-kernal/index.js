@@ -102,7 +102,7 @@ const kernal = {
     util.log.success('==========初始化结束==========')
   },
   /**
-   * 装在状态控制器方法
+   * 装载状态控制器方法
    * @param {*} stores
    */
   loadStores(stores) {
